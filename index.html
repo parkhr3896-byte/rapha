@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라파(RAPHA) 선교회 | 온전한 회복을 향하여</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6741;
+            --secondary-color: #D4A35B;
+            --bg-light: #FDFCF8;
+            --bg-gray: #F4F2EC;
+            --text-dark: #2C2C2C;
+            --text-gray: #555555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(253, 252, 248, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1.5px;
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links .highlight-nav {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .nav-links .admin-nav {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            margin-top: 60px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 700;
+            animation: fadeInDown 1s ease;
+            line-height: 1.3;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero-btn:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .hero-btn.filled {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .hero-btn.filled:hover {
+            background-color: #364B30;
+            border-color: #364B30;
+            color: white;
+        }
+
+        /* Section Settings */
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 60px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            word-break: keep-all;
+            line-height: 1.9;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* Activities Section */
+        #activities {
+            background-color: var(--bg-gray);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 35px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 700;
+        }
+
+        .card-content p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            word-break: keep-all;
+        }
+
+        /* Gallery Section */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 30px 20px 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-item:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-overlay h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+        
+        .photo-overlay p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        /* Contact & Form Section */
+        #contact {
+            background: linear-gradient(rgba(74, 103, 65, 0.95), rgba(74, 103, 65, 0.95)), url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            color: white;
+            padding: 120px 20px;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-card {
+            background: white;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #364B30;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .modal-tab {
+            flex: 1;
+            padding: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-gray);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+
+        .auth-form {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .auth-form.active {
+            display: flex;
+        }
+
+        .modal-cancel-btn {
+            width: 100%;
+            padding: 12px;
+            background: #e2e2e2;
+            border: none;
+            border-radius: 8px;
+            color: #333;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .modal-cancel-btn:hover {
+            background: #d0d0d0;
+        }
+
+        /* Admin Dashboard Styles */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .admin-table th {
+            background-color: var(--bg-gray);
+            color: var(--primary-color);
+        }
+
+        .delete-btn {
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .delete-btn:hover {
+            background: #c9302c;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2F4027;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .admin-link-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+        .admin-link-btn:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .about-content, .contact-card, .modal-content { padding: 30px 20px; }
+            .photo-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-btn { width: 80%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">RAPHA</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#about">선교회 소개</a></li>
+                <li><a href="#activities">사역 내용</a></li>
+                <li><a href="#gallery">활동 사진</a></li>
+                <li><a href="#contact">후원/문의</a></li>
+                <li><a onclick="openAuthModal('login')" class="highlight-nav">온마인드 클리닉 🔒</a></li>
+                <li><a onclick="openAdminModal()" class="admin-nav">관리자 모드 ⚙️</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section (온마인드 클리닉 버튼 제거됨) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge">RAPHA MISSION</span>
+            <h1>마음을 돌보고,<br>삶을 온전하게 회복하는 곳</h1>
+            <p>하나님의 사랑으로 한 사람의 소중한 가치를 발견하고<br>진정한 회복과 성장을 돕습니다.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="hero-btn">선교회 소개</a>
+                <a href="#contact" class="hero-btn filled">후원/문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">라파(RAPHA) 선교회 소개</h2>
+            <p class="section-subtitle">"회복하다, 온전하게 하다"</p>
+            <div class="about-content">
+                <p><span class="highlight">‘라파(RAPHA)’</span>는 히브리어로 <strong>‘회복하다, 온전하게 하다’</strong>라는 뜻을 담고 있습니다.</p>
+                <p>라파 선교회는 하나님의 사랑으로 사람의 마음을 따뜻하게 돌보고, 각자가 자신의 소중한 가치를 발견하며 삶의 소망과 성장을 찾아가도록 돕는 공동체입니다.</p>
+                <p>마음의 회복에서 멈추지 않고, 새로운 관점과 지혜를 통해 삶이 더욱 건강하고 아름답게 변화되기를 소망합니다. 한 사람 한 사람의 마음을 따뜻하게 살피고, 그 안에 있는 가능성을 발견하며, 각자의 삶이 더욱 빛날 수 있도록 묵묵히 함께 걸어갑니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title">주요 사역 활동</h2>
+            <p class="section-subtitle">열방을 향해 뻗어나가는 라파 선교회의 따뜻한 발걸음입니다</p>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="해외 선교" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3>🌍 해외 선교</h3>
+                        <p>땅 끝까지 복음을 전하라는 사명에 순종하여, 열악한 환경에 놓인 열방의 영혼들을 찾아갑니다. 언어와 문화의 장벽을 넘어 그리스도의 사랑을 심고, 교육과 자립 프로젝트를 지원합니다.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="의료 선교" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3>🩺 의료 선교</h3>
+                        <p>의료 혜택의 사각지대에 놓여 질병으로 고통받는 이웃들에게 찾아갑니다. 헌신된 의료진들의 봉사를 통해 육신의 치료를 넘어 마음의 병까지 어루만지는 전인적인 치유를 소망합니다.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="말씀 선교" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3>📖 말씀 선교</h3>
+                        <p>모든 회복의 기초는 하나님의 말씀에 있습니다. 생명의 말씀을 깊이 있게 가르치고 나누며, 제자 훈련과 세미나를 통해 굳건한 신앙의 뿌리를 내리게 합니다.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="구제 선교" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3>🤝 구제 선교</h3>
+                        <p>가난과 소외로 인해 눈물짓는 이웃들의 선한 이웃이 됩니다. 식량 지원, 긴급 구호 사역을 통해 가장 낮고 어두운 곳에 그리스도의 따뜻한 빛과 소망을 비춥니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">활동 갤러리</h2>
+            <p class="section-subtitle">라파 선교회가 걸어온 은혜와 회복의 현장입니다</p>
+            
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="봉사 팀워크">
+                    <div class="photo-overlay">
+                        <h4>하나된 마음, 봉사 팀워크</h4>
+                        <p>서로 연합하여 한 마음으로 섬길 때 더 큰 치유와 회복의 기적이 일어납니다. 각자의 은사를 모아 헌신하는 동역자들의 모습입니다.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="파송과 헌신">
+                    <div class="photo-overlay">
+                        <h4>열방을 향한 파송과 헌신</h4>
+                        <p>보내심을 받은 자로서 복음의 빚진 마음을 안고 열방으로 나아갑니다. 기도와 축복 속에서 새로운 사역지로 발걸음을 내딛습니다.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="의료 봉사 진료 현장">
+                    <div class="photo-overlay">
+                        <h4>헌신적인 의료 봉사 현장</h4>
+                        <p>의료 혜택이 닿지 않는 곳곳을 찾아가 따뜻한 손길로 육신의 아픔을 치료하고 사랑을 전합니다.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="함께하는 예배">
+                    <div class="photo-overlay">
+                        <h4>함께하는 예배와 교제</h4>
+                        <p>모든 사역의 중심인 예배를 통해 영적인 힘을 얻고 성도 간의 아름다운 교제를 나눕니다.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="구호 사역">
+                    <div class="photo-overlay">
+                        <h4>사랑을 나누는 구호 사역</h4>
+                        <p>가장 도움이 필요한 곳에 실제적인 나눔을 실천하며 그리스도의 사랑을 흘려보냅니다.</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="기도하는 손">
+                    <div class="photo-overlay">
+                        <h4>중보와 치유의 기도</h4>
+                        <p>우리의 힘이 아닌 기도로 사역을 준비하며, 회복을 구하는 간절한 마음을 모읍니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">후원 / 문의하기</h2>
+            <p class="section-subtitle">치유와 회복의 선교 사역에 동참해 주셔서 감사합니다</p>
+            
+            <div class="contact-card">
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">성명</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="예: 010-1234-5678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 주소</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">문의내용</label>
+                        <textarea id="message" name="message" rows="6" placeholder="후원 및 사역에 관한 문의사항을 남겨주시면 정성껏 답변해 드리겠습니다." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">후원/문의 제출</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Modal (로그인 / 회원가입 팝업) -->
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab active" id="loginTabBtn" onclick="switchTab('login')">로그인</button>
+                <button type="button" class="modal-tab" id="signupTabBtn" onclick="switchTab('signup')">회원가입</button>
+            </div>
+
+            <!-- 로그인 폼 -->
+            <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginId">아이디</label>
+                    <input type="text" id="loginId" placeholder="아이디를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPw">비밀번호</label>
+                    <input type="password" id="loginPw" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 10px;">로그인 후 검사하기</button>
+                <button type="button" class="modal-cancel-btn" onclick="closeAuthModal()">닫기</button>
+            </form>
+
+            <!-- 회원가입 폼 (승인 번호가 보이지 않도록 숨김 처리됨) -->
+            <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">이름</label>
+                    <input type="text" id="signupName" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupId">아이디</label>
+                    <input type="text" id="signupId" placeholder="사용할 아이디를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPw">비밀번호</label>
+                    <input type="password" id="signupPw" placeholder="사용할 비밀번호를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupCode">관리자 승인 코드</label>
+                    <input type="password" id="signupCode" placeholder="승인 코드를 입력하세요" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 10px; background-color: var(--secondary-color);">승인 및 회원가입 완료</button>
+                <button type="button" class="modal-cancel-btn" onclick="closeAuthModal()">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Modal (관리자 창 팝업) -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <h3 style="color: var(--primary-color); font-family: 'Nanum Myeongjo', serif; margin-bottom: 15px;">관리자 창</h3>
+            
+            <!-- 관리자 로그인 전 -->
+            <div id="adminLoginArea">
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.95rem;">관리자 전용 비밀번호를 입력해주세요.</p>
+                <form onsubmit="handleAdminLogin(event)" class="contact-form">
+                    <div class="form-group">
+                        <label for="adminPw">관리자 비밀번호</label>
+                        <input type="password" id="adminPw" placeholder="관리자 비밀번호 입력" required>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 10px;">관리자 로그인</button>
+                    <button type="button" class="modal-cancel-btn" onclick="closeAdminModal()">닫기</button>
+                </form>
+            </div>
+
+            <!-- 관리자 로그인 후 (회원 관리 대시보드) -->
+            <div id="adminDashboardArea" style="display: none; text-align: left;">
+                <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 10px;">📋 가입된 회원 명단 관리</p>
+                <div style="max-height: 300px; overflow-y: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>아이디</th>
+                                <th>가입일시</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- 동적으로 채워짐 -->
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="modal-cancel-btn" style="margin-top: 20px;" onclick="closeAdminModal()">관리자 창 닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">RAPHA</div>
+        <p class="footer-text">마음의 회복, 그리고 빛나는 삶을 향하여</p>
+        <button onclick="openAdminModal()" class="admin-link-btn">관리자 모드 접속</button>
+        <p class="footer-copyright" style="margin-top: 10px;">&copy; 라파(RAPHA) 선교회. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript 인증 및 관리자 시스템 -->
+    <script>
+        // 부드러운 스크롤 이동
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(!this.getAttribute('href').startsWith('#')) return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 모달 제어 함수들
+        function openAuthModal(tab) {
+            document.getElementById('authModal').style.display = 'flex';
+            switchTab(tab);
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'flex';
+            document.getElementById('adminLoginArea').style.display = 'block';
+            document.getElementById('adminDashboardArea').style.display = 'none';
+            document.getElementById('adminPw').value = '';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // 로그인 / 회원가입 탭 전환
+        function switchTab(tab) {
+            const loginBtn = document.getElementById('loginTabBtn');
+            const signupBtn = document.getElementById('signupTabBtn');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            if(tab === 'login') {
+                loginBtn.classList.add('active');
+                signupBtn.classList.remove('active');
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+            } else {
+                signupBtn.classList.add('active');
+                loginBtn.classList.remove('active');
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+            }
+        }
+
+        // 회원가입 처리 (내부적으로 4545 검증)
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value.trim();
+            const id = document.getElementById('signupId').value.trim();
+            const pw = document.getElementById('signupPw').value.trim();
+            const code = document.getElementById('signupCode').value.trim();
+
+            if(code !== '4545') {
+                alert('관리자 승인 코드가 올바르지 않습니다.');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+
+            if(users[id]) {
+                alert('이미 존재하는 아이디입니다.');
+                return;
+            }
+
+            const now = new Date().toLocaleString();
+            users[id] = { name: name, pw: pw, date: now };
+            localStorage.setItem('rapha_users', JSON.stringify(users));
+
+            alert('회원가입이 완료되었습니다!');
+            document.getElementById('signupName').value = '';
+            document.getElementById('signupId').value = '';
+            document.getElementById('signupPw').value = '';
+            document.getElementById('signupCode').value = '';
+            switchTab('login');
+        }
+
+        // 로그인 처리
+        function handleLogin(e) {
+            e.preventDefault();
+            const id = document.getElementById('loginId').value.trim();
+            const pw = document.getElementById('loginPw').value.trim();
+
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+
+            if((id === 'admin' && pw === '4545') || (users[id] && users[id].pw === pw)) {
+                alert('로그인 성공! 온마인드 클리닉 페이지로 이동합니다.');
+                window.open('https://dh-mind-test.duckdns.org/', '_blank');
+                closeAuthModal();
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginPw').value = '';
+            } else {
+                alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+            }
+        }
+
+        // 관리자 로그인 처리
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pw = document.getElementById('adminPw').value.trim();
+
+            if(pw === '4545') {
+                alert('관리자 인증이 완료되었습니다.');
+                document.getElementById('adminLoginArea').style.display = 'none';
+                document.getElementById('adminDashboardArea').style.display = 'block';
+                loadUserList();
+            } else {
+                alert('관리자 비밀번호가 틀렸습니다.');
+            }
+        }
+
+        // 관리자 창 회원 명단 불러오기
+        function loadUserList() {
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = '';
+
+            const userKeys = Object.keys(users);
+            if(userKeys.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #888;">가입된 회원이 없습니다.</td></tr>`;
+                return;
+            }
+
+            userKeys.forEach(id => {
+                const user = users[id];
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${id}</td>
+                    <td>${user.date || '-'}</td>
+                    <td><button class="delete-btn" onclick="deleteUser('${id}')">삭제</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 회원 삭제 기능
+        function deleteUser(id) {
+            if(confirm(`정말 '${id}' 회원을 삭제하시겠습니까?`)) {
+                let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+                delete users[id];
+                localStorage.setItem('rapha_users', JSON.stringify(users));
+                loadUserList();
+            }
+        }
+    </script>
+</body>
+</html>

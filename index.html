@@ -16,9 +16,9 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&h=630&q=80">
     <meta name="theme-color" content="#4A6741">
 
-    <!-- 검색 등록 인증 태그: 발급받은 코드로 content 값을 바꾼 뒤, 그 줄 앞뒤의 주석 기호를 지워주세요 -->
-   <meta name="naver-site-verification" content="93c3dbe0e5e9f7a7f654fafa6b7d8900a9f0fc64">
-   <meta name="google-site-verification" content="C-xajMrpJT28xow69gOFFVCk7jgciBdbXljCVUiW-F4" />
+    <!-- 검색 등록 인증 태그 -->
+    <meta name="naver-site-verification" content="93c3dbe0e5e9f7a7f654fafa6b7d8900a9f0fc64">
+    <meta name="google-site-verification" content="C-xajMrpJT28xow69gOFFVCk7jgciBdbXljCVUiw-F4">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -100,6 +100,11 @@
         .nav-links .highlight-nav {
             color: var(--secondary-color);
             font-weight: 700;
+        }
+
+        .nav-links .admin-nav {
+            color: #888;
+            font-size: 0.85rem;
         }
 
         /* Hero Section */
@@ -450,138 +455,114 @@
             background-color: #364B30;
         }
 
-        /* Contact Info */
-        .contact-intro {
-            text-align: center;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-        }
-
-        .contact-list {
-            list-style: none;
-            border-top: 1px solid #eee;
-        }
-
-        .contact-row {
-            display: flex;
-            align-items: baseline;
-            gap: 20px;
-            padding: 18px 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .contact-label {
-            flex: 0 0 90px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .contact-value {
-            font-size: 1.05rem;
-            word-break: break-all;
-        }
-
-        .contact-value a:hover {
-            color: var(--secondary-color);
-        }
-
-        .contact-value.pending {
-            color: #999;
-            font-size: 0.95rem;
-        }
-
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.7rem;
-            line-height: 1;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 4px 8px;
-        }
-
-        /* Login Modal */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed;
-            inset: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.6);
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 20px;
             z-index: 2000;
-        }
-
-        .modal-overlay.open {
-            display: flex;
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
             background: white;
-            width: 100%;
-            max-width: 420px;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .modal-title {
-            font-family: 'Nanum Myeongjo', serif;
-            color: var(--primary-color);
-            font-size: 1.6rem;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .modal-desc {
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 0.95rem;
+        .modal-tabs {
+            display: flex;
             margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
         }
 
-        .login-error {
-            color: #C0392B;
-            font-size: 0.9rem;
-        }
-
-        .login-error:empty {
-            display: none;
-        }
-
-        .start-btn {
-            display: block;
-            text-align: center;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 18px;
+        .modal-tab {
+            flex: 1;
+            padding: 10px;
             font-size: 1.1rem;
             font-weight: 700;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
+            color: var(--text-gray);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        .start-btn:hover {
-            background-color: #B98A45;
+        .modal-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+
+        .auth-form {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .auth-form.active {
+            display: flex;
         }
 
         .modal-cancel-btn {
             width: 100%;
             padding: 12px;
-            margin-top: 10px;
-            background: #E2E2E2;
+            background: #e2e2e2;
             border: none;
             border-radius: 8px;
             color: #333;
-            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
         }
 
         .modal-cancel-btn:hover {
-            background: #D0D0D0;
+            background: #d0d0d0;
+        }
+
+        /* Admin Dashboard Styles */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .admin-table th {
+            background-color: var(--bg-gray);
+            color: var(--primary-color);
+        }
+
+        .delete-btn {
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .delete-btn:hover {
+            background: #c9302c;
         }
 
         /* Footer */
@@ -613,32 +594,27 @@
             opacity: 0.6;
         }
 
+        .admin-link-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+        .admin-link-btn:hover {
+            color: white;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            header.nav-open .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(253, 252, 248, 0.98);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-                padding: 8px 0;
-            }
-            header.nav-open .nav-links li { width: 100%; text-align: center; }
-            header.nav-open .nav-links a { display: block; padding: 13px 20px; }
             .about-content, .contact-card, .modal-content { padding: 30px 20px; }
             .photo-grid { grid-template-columns: 1fr; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .hero-btn { width: 80%; text-align: center; }
-            .contact-row { flex-direction: column; gap: 4px; }
-            .contact-label { flex: none; }
         }
     </style>
 </head>
@@ -654,13 +630,13 @@
                 <li><a href="#activities">사역 내용</a></li>
                 <li><a href="#gallery">활동 사진</a></li>
                 <li><a href="#contact">후원/문의</a></li>
-                <li><a href="https://dh-mind-test.duckdns.org/start" target="_blank" rel="noopener" class="highlight-nav clinic-link">온마인드 클리닉 🔒</a></li>
+                <li><a onclick="openAuthModal('login')" class="highlight-nav">온마인드 클리닉 🔒</a></li>
+                <li><a onclick="openAdminModal()" class="admin-nav">관리자 모드 ⚙️</a></li>
             </ul>
-            <button type="button" class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (온마인드 클리닉 버튼 제거됨) -->
     <section id="home" class="hero">
         <div class="hero-content">
             <span class="badge">RAPHA MISSION</span>
@@ -796,59 +772,116 @@
             <p class="section-subtitle">치유와 회복의 선교 사역에 동참해 주셔서 감사합니다</p>
             
             <div class="contact-card">
-                <p class="contact-intro">후원 및 사역 관련 문의는 아래 연락처로 부탁드립니다.</p>
-
-                <!--
-                  ▼ 연락처 등록 방법
-                  각 항목의 '준비 중입니다' 줄을 지우고,
-                  그 아래 예시 줄의 앞뒤 주석 기호를 지운 다음 실제 번호/주소로 바꿔주세요.
-                -->
-                <ul class="contact-list">
-                    <li class="contact-row">
-                        <span class="contact-label">전화</span>
-                        <span class="contact-value pending">준비 중입니다</span>
-                        <!-- <a class="contact-value" href="tel:010-0000-0000">010-0000-0000</a> -->
-                    </li>
-                    <li class="contact-row">
-                        <span class="contact-label">이메일</span>
-                        <span class="contact-value pending">준비 중입니다</span>
-                        <!-- <a class="contact-value" href="mailto:contact@rapha-mission.com">contact@rapha-mission.com</a> -->
-                    </li>
-                    <li class="contact-row">
-                        <span class="contact-label">후원 계좌</span>
-                        <span class="contact-value pending">준비 중입니다</span>
-                        <!-- <span class="contact-value">○○은행 000-0000-0000 (예금주: 라파선교회)</span> -->
-                    </li>
-                </ul>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">성명</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="예: 010-1234-5678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 주소</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">문의내용</label>
+                        <textarea id="message" name="message" rows="6" placeholder="후원 및 사역에 관한 문의사항을 남겨주시면 정성껏 답변해 드리겠습니다." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">후원/문의 제출</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- 온마인드 클리닉 로그인 창 -->
-    <div id="loginModal" class="modal-overlay">
-        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-            <div id="loginArea">
-                <h3 id="loginTitle" class="modal-title">온마인드 클리닉</h3>
-                <p class="modal-desc">선교회에서 안내받은 아이디와 비밀번호로 로그인해주세요.</p>
-                <form id="loginForm" class="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="loginId">아이디</label>
-                        <input type="text" id="loginId" autocomplete="username" autocapitalize="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPw">비밀번호</label>
-                        <input type="password" id="loginPw" autocomplete="current-password">
-                    </div>
-                    <p id="loginError" class="login-error" role="alert"></p>
-                    <button type="submit" class="submit-btn">로그인</button>
-                </form>
-                <button type="button" class="modal-cancel-btn" data-close>닫기</button>
+    <!-- Auth Modal (로그인 / 회원가입 팝업) -->
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab active" id="loginTabBtn" onclick="switchTab('login')">로그인</button>
+                <button type="button" class="modal-tab" id="signupTabBtn" onclick="switchTab('signup')">회원가입</button>
             </div>
-            <div id="startArea" hidden>
-                <h3 class="modal-title">로그인되었습니다</h3>
-                <p class="modal-desc">버튼을 누르면 새 창에서 검사가 시작됩니다.</p>
-                <a href="https://dh-mind-test.duckdns.org/start" target="_blank" rel="noopener" class="start-btn" id="startBtn">검사 시작하기</a>
-                <button type="button" class="modal-cancel-btn" data-close>닫기</button>
+
+            <!-- 로그인 폼 -->
+            <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginId">아이디</label>
+                    <input type="text" id="loginId" placeholder="아이디를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPw">비밀번호</label>
+                    <input type="password" id="loginPw" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 10px;">로그인 후 검사하기</button>
+                <button type="button" class="modal-cancel-btn" onclick="closeAuthModal()">닫기</button>
+            </form>
+
+            <!-- 회원가입 폼 (승인 번호가 보이지 않도록 숨김 처리됨) -->
+            <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">이름</label>
+                    <input type="text" id="signupName" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupId">아이디</label>
+                    <input type="text" id="signupId" placeholder="사용할 아이디를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPw">비밀번호</label>
+                    <input type="password" id="signupPw" placeholder="사용할 비밀번호를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupCode">관리자 승인 코드</label>
+                    <input type="password" id="signupCode" placeholder="승인 코드를 입력하세요" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 10px; background-color: var(--secondary-color);">승인 및 회원가입 완료</button>
+                <button type="button" class="modal-cancel-btn" onclick="closeAuthModal()">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Modal (관리자 창 팝업) -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <h3 style="color: var(--primary-color); font-family: 'Nanum Myeongjo', serif; margin-bottom: 15px;">관리자 창</h3>
+            
+            <!-- 관리자 로그인 전 -->
+            <div id="adminLoginArea">
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.95rem;">관리자 전용 비밀번호를 입력해주세요.</p>
+                <form onsubmit="handleAdminLogin(event)" class="contact-form">
+                    <div class="form-group">
+                        <label for="adminPw">관리자 비밀번호</label>
+                        <input type="password" id="adminPw" placeholder="관리자 비밀번호 입력" required>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 10px;">관리자 로그인</button>
+                    <button type="button" class="modal-cancel-btn" onclick="closeAdminModal()">닫기</button>
+                </form>
+            </div>
+
+            <!-- 관리자 로그인 후 (회원 관리 대시보드) -->
+            <div id="adminDashboardArea" style="display: none; text-align: left;">
+                <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 10px;">📋 가입된 회원 명단 관리</p>
+                <div style="max-height: 300px; overflow-y: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>아이디</th>
+                                <th>가입일시</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- 동적으로 채워짐 -->
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="modal-cancel-btn" style="margin-top: 20px;" onclick="closeAdminModal()">관리자 창 닫기</button>
             </div>
         </div>
     </div>
@@ -857,154 +890,166 @@
     <footer>
         <div class="footer-logo">RAPHA</div>
         <p class="footer-text">마음의 회복, 그리고 빛나는 삶을 향하여</p>
-        <p class="footer-copyright">&copy; 라파(RAPHA) 선교회. All rights reserved.</p>
+        <button onclick="openAdminModal()" class="admin-link-btn">관리자 모드 접속</button>
+        <p class="footer-copyright" style="margin-top: 10px;">&copy; 라파(RAPHA) 선교회. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript 인증 및 관리자 시스템 -->
     <script>
-        // 메뉴 클릭 시 부드럽게 스크롤
+        // 부드러운 스크롤 이동
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                if(!this.getAttribute('href').startsWith('#')) return;
+                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
 
-        // 모바일 메뉴 열기/닫기
-        const header = document.querySelector('header');
-        const menuToggle = document.querySelector('.menu-toggle');
-        function closeMenu() {
-            header.classList.remove('nav-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-        menuToggle.addEventListener('click', () => {
-            const open = header.classList.toggle('nav-open');
-            menuToggle.setAttribute('aria-expanded', String(open));
-        });
-        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', closeMenu));
-
-        /* =========================================================
-           온마인드 클리닉 로그인 (안내용 잠금)
-           - 비밀번호는 원문이 아닌 암호화(SHA-256) 값으로만 적어둡니다.
-           - 계정 추가/변경 방법:
-             1) 홈페이지를 열고 F12 → Console 탭
-             2) raphaHash('아이디', '비밀번호') 입력 후 Enter
-             3) 출력된 값을 아래 ACCOUNTS에 '아이디': '출력값' 형태로 넣기
-           ========================================================= */
-        const ACCOUNTS = {
-            'admin': 'f50557a77f4b33d912a7483295641cf441c9824240f04b396dba05cb823c397e'
-        };
-
-        const LOGIN_KEY = 'rapha_clinic_login';
-        const loginModal = document.getElementById('loginModal');
-        const loginArea = document.getElementById('loginArea');
-        const startArea = document.getElementById('startArea');
-        const loginForm = document.getElementById('loginForm');
-        const loginId = document.getElementById('loginId');
-        const loginPw = document.getElementById('loginPw');
-        const loginError = document.getElementById('loginError');
-
-        function isLoggedIn() {
-            try { return sessionStorage.getItem(LOGIN_KEY) === '1'; } catch (e) { return false; }
-        }
-        function setLoggedIn() {
-            try { sessionStorage.setItem(LOGIN_KEY, '1'); } catch (e) {}
+        // 모달 제어 함수들
+        function openAuthModal(tab) {
+            document.getElementById('authModal').style.display = 'flex';
+            switchTab(tab);
         }
 
-        function openLogin() {
-            loginForm.reset();
-            loginError.textContent = '';
-            loginArea.hidden = false;
-            startArea.hidden = true;
-            loginModal.classList.add('open');
-            loginId.focus();
-        }
-        function closeLogin() {
-            loginModal.classList.remove('open');
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
         }
 
-        // 온마인드 클리닉 메뉴: 로그인 전이면 로그인 창, 로그인 후면 바로 검사 시작 페이지로 이동
-        document.querySelectorAll('.clinic-link').forEach(link => {
-            link.addEventListener('click', e => {
-                if (!isLoggedIn()) {
-                    e.preventDefault();
-                    openLogin();
-                }
-            });
-        });
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'flex';
+            document.getElementById('adminLoginArea').style.display = 'block';
+            document.getElementById('adminDashboardArea').style.display = 'none';
+            document.getElementById('adminPw').value = '';
+        }
 
-        loginForm.addEventListener('submit', e => {
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // 로그인 / 회원가입 탭 전환
+        function switchTab(tab) {
+            const loginBtn = document.getElementById('loginTabBtn');
+            const signupBtn = document.getElementById('signupTabBtn');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            if(tab === 'login') {
+                loginBtn.classList.add('active');
+                signupBtn.classList.remove('active');
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+            } else {
+                signupBtn.classList.add('active');
+                loginBtn.classList.remove('active');
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+            }
+        }
+
+        // 회원가입 처리 (내부적으로 4545 검증)
+        function handleSignup(e) {
             e.preventDefault();
-            const id = loginId.value.trim();
-            const pw = loginPw.value;
-            if (!id || !pw) {
-                loginError.textContent = '아이디와 비밀번호를 모두 입력해주세요.';
+            const name = document.getElementById('signupName').value.trim();
+            const id = document.getElementById('signupId').value.trim();
+            const pw = document.getElementById('signupPw').value.trim();
+            const code = document.getElementById('signupCode').value.trim();
+
+            if(code !== '4545') {
+                alert('관리자 승인 코드가 올바르지 않습니다.');
                 return;
             }
-            if (ACCOUNTS[id] && ACCOUNTS[id] === raphaHash(id, pw)) {
-                setLoggedIn();
-                loginArea.hidden = true;
-                startArea.hidden = false;
-                document.getElementById('startBtn').focus();
-            } else {
-                loginError.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
-                loginPw.value = '';
-                loginPw.focus();
+
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+
+            if(users[id]) {
+                alert('이미 존재하는 아이디입니다.');
+                return;
             }
-        });
 
-        document.getElementById('startBtn').addEventListener('click', () => setTimeout(closeLogin, 300));
-        loginModal.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', closeLogin));
-        loginModal.addEventListener('click', e => { if (e.target === loginModal) closeLogin(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLogin(); });
+            const now = new Date().toLocaleString();
+            users[id] = { name: name, pw: pw, date: now };
+            localStorage.setItem('rapha_users', JSON.stringify(users));
 
-        function raphaHash(id, pw) {
-            return sha256('rapha-mission:' + id + ':' + pw);
+            alert('회원가입이 완료되었습니다!');
+            document.getElementById('signupName').value = '';
+            document.getElementById('signupId').value = '';
+            document.getElementById('signupPw').value = '';
+            document.getElementById('signupCode').value = '';
+            switchTab('login');
         }
 
-        // SHA-256 (http 접속 등 어떤 환경에서도 동작하도록 직접 구현)
-        function sha256(text) {
-            const bytes = new TextEncoder().encode(text);
-            const K = [], H = [];
-            const frac = x => ((x - Math.floor(x)) * 4294967296) >>> 0;
-            for (let n = 2, found = 0; found < 64; n++) {
-                let prime = true;
-                for (let d = 2; d * d <= n; d++) if (n % d === 0) { prime = false; break; }
-                if (prime) {
-                    if (found < 8) H[found] = frac(Math.sqrt(n));
-                    K[found++] = frac(Math.cbrt(n));
-                }
+        // 로그인 처리
+        function handleLogin(e) {
+            e.preventDefault();
+            const id = document.getElementById('loginId').value.trim();
+            const pw = document.getElementById('loginPw').value.trim();
+
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+
+            if((id === 'admin' && pw === '4545') || (users[id] && users[id].pw === pw)) {
+                alert('로그인 성공! 온마인드 클리닉 페이지로 이동합니다.');
+                window.open('https://dh-mind-test.duckdns.org/', '_blank');
+                closeAuthModal();
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginPw').value = '';
+            } else {
+                alert('아이디 또는 비밀번호가 일치하지 않습니다.');
             }
-            const len = bytes.length;
-            const total = Math.ceil((len + 9) / 64) * 64;
-            const msg = new Uint8Array(total);
-            msg.set(bytes);
-            msg[len] = 0x80;
-            const view = new DataView(msg.buffer);
-            view.setUint32(total - 8, Math.floor(len * 8 / 4294967296));
-            view.setUint32(total - 4, (len * 8) >>> 0);
-            const w = new Uint32Array(64);
-            const rotr = (x, r) => (x >>> r) | (x << (32 - r));
-            for (let off = 0; off < total; off += 64) {
-                for (let i = 0; i < 16; i++) w[i] = view.getUint32(off + i * 4);
-                for (let i = 16; i < 64; i++) {
-                    const s1 = rotr(w[i - 15], 7) ^ rotr(w[i - 15], 18) ^ (w[i - 15] >>> 3);
-                    const s2 = rotr(w[i - 2], 17) ^ rotr(w[i - 2], 19) ^ (w[i - 2] >>> 10);
-                    w[i] = (w[i - 16] + s1 + w[i - 7] + s2) | 0;
-                }
-                let [a, b, c, d, e, f, g, h] = H;
-                for (let i = 0; i < 64; i++) {
-                    const t1 = (h + (rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)) + ((e & f) ^ (~e & g)) + K[i] + w[i]) | 0;
-                    const t2 = ((rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)) + ((a & b) ^ (a & c) ^ (b & c))) | 0;
-                    h = g; g = f; f = e; e = (d + t1) | 0;
-                    d = c; c = b; b = a; a = (t1 + t2) | 0;
-                }
-                H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;
-                H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0; H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;
+        }
+
+        // 관리자 로그인 처리
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pw = document.getElementById('adminPw').value.trim();
+
+            if(pw === '4545') {
+                alert('관리자 인증이 완료되었습니다.');
+                document.getElementById('adminLoginArea').style.display = 'none';
+                document.getElementById('adminDashboardArea').style.display = 'block';
+                loadUserList();
+            } else {
+                alert('관리자 비밀번호가 틀렸습니다.');
             }
-            return H.map(x => (x >>> 0).toString(16).padStart(8, '0')).join('');
+        }
+
+        // 관리자 창 회원 명단 불러오기
+        function loadUserList() {
+            let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = '';
+
+            const userKeys = Object.keys(users);
+            if(userKeys.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #888;">가입된 회원이 없습니다.</td></tr>`;
+                return;
+            }
+
+            userKeys.forEach(id => {
+                const user = users[id];
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${id}</td>
+                    <td>${user.date || '-'}</td>
+                    <td><button class="delete-btn" onclick="deleteUser('${id}')">삭제</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 회원 삭제 기능
+        function deleteUser(id) {
+            if(confirm(`정말 '${id}' 회원을 삭제하시겠습니까?`)) {
+                let users = JSON.parse(localStorage.getItem('rapha_users')) || {};
+                delete users[id];
+                localStorage.setItem('rapha_users', JSON.stringify(users));
+                loadUserList();
+            }
         }
     </script>
 </body>
